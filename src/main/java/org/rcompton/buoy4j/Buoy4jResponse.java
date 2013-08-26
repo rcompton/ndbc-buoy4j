@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -16,6 +15,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import com.google.gson.Gson;
 
 
 public class Buoy4jResponse {
@@ -30,6 +31,12 @@ public class Buoy4jResponse {
 		stations = parseStations(xmlString);
 	}
 
+	/**
+	 * Parse the downloaded nbdc xml into a list of Buoy4jStations
+	 * Buoy4jStations appear in order from nearest to farthest
+	 * @param xmlString
+	 * @return
+	 */
 	private List<Buoy4jStation> parseStations(String xmlString){
 		List<Buoy4jStation> output = new ArrayList<Buoy4jStation>();
 
@@ -42,17 +49,12 @@ public class Buoy4jResponse {
 				if (itemNode.getNodeType() == Node.ELEMENT_NODE) {
 					Buoy4jStation buoy4jStation = new Buoy4jStation(itemNode);
 					output.add(buoy4jStation);
-					System.out.println(buoy4jStation.toString());
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		};
-
-		return null;
-		//
-
+		return output;
 	}
 
 	/**
@@ -71,6 +73,14 @@ public class Buoy4jResponse {
 		return builder.parse(is);
 	}
 
-
+	public List<Buoy4jStation> getStations() {
+		return stations;
+	}
+	
+	@Override
+	public String toString(){
+		Gson gson = new Gson();
+		return gson.toJson(this);
+	}
 
 }

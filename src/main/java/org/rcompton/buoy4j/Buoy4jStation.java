@@ -12,9 +12,30 @@ import com.google.gson.Gson;
 
 /**
  * 
- * Container for the current data at a buoy
- * 
- *  <item>
+ * Container/parser for the current data at a buoy
+ * @author ryan
+ *
+ */
+public class Buoy4jStation {
+	
+	String link;
+	String pubDate;
+	String title;
+	Location buoyLatLng;
+	boolean isShip; //sometimes the data gets sent from nearby ships in addition to buoys
+	String distance;
+	String windDirection;
+	String windSpeed;
+	String waveHeight;
+	String wavePeriodDominant;
+	String wavePeriodMean;
+	String waveDirection;
+	String waterTemperature;
+	
+	/**
+	 * Construct from a Node after parsing some xml
+	 * Sample input:
+	 * *  <item>
       <pubDate>Sun, 25 Aug 2013 22:55:45 UT</pubDate>
       <title>Station 46086 - SAN CLEMENTE BASIN - 27NM SE OF SAN CLEMENTE IS, CA</title>
       <description><![CDATA[
@@ -36,27 +57,9 @@ import com.google.gson.Gson;
       <guid>http://www.ndbc.noaa.gov/station_page.php?station=46086&amp;ts=1377467400</guid>
       <georss:point>32.491 -118.034</georss:point>
     </item>
-
- * 
- * @author ryan
- *
- */
-public class Buoy4jStation {
-	
-
-	String pubDate;
-	String title;
-	Location buoyLatLng;
-	boolean isShip;
-	String distance;
-	String windDirection;
-	String windSpeed;
-	String waveHeight;
-	String wavePeriodDominant;
-	String wavePeriodMean;
-	String waveDirection;
-	String waterTemperature;
-	
+	 * 
+	 * @param itemNode
+	 */
 	public Buoy4jStation(Node itemNode){
 		super();
 		
@@ -72,8 +75,13 @@ public class Buoy4jStation {
 	        			this.isShip = true;
 	        		}
 	        	}
+	        	
+	        	if(measurementsNode.getNodeName().equals("link"))
+	        		this.link = getNodeText(measurementsNode);
+	        	
 	        	if(measurementsNode.getNodeName().equals("pubDate"))
 	        		this.pubDate = getNodeText(measurementsNode);
+	        	
 	        	if(measurementsNode.getNodeName().equals("georss:point"))
 	        		this.buoyLatLng = new Location(getNodeText(measurementsNode).split(" "));
 	        	
@@ -102,29 +110,27 @@ public class Buoy4jStation {
 				distance = lineArr[1].split("or")[1].split("of")[0].trim() + " of search location";
 			}
 			if(lineArr[0].contains("Wind Direction")){
-				windDirection = lineArr[1];
+				windDirection = lineArr[1].trim();
 			}
 			if(lineArr[0].contains("Wind Speed")){
-				windSpeed = lineArr[1];
+				windSpeed = lineArr[1].trim();
 			}
 			if(lineArr[0].contains("Significant Wave Height")){
-				waveHeight = lineArr[1];
+				waveHeight = lineArr[1].trim();
 			}
 			if(lineArr[0].contains("Dominant Wave Period")){
-				wavePeriodDominant = lineArr[1];
+				wavePeriodDominant = lineArr[1].trim();
 			}
 			if(lineArr[0].contains("Average Period")){
-				wavePeriodMean = lineArr[1];
+				wavePeriodMean = lineArr[1].trim();
 			}
 			if(lineArr[0].contains("Mean Wave Direction")){
-				waveDirection = lineArr[1];
+				waveDirection = lineArr[1].trim();
 			}
 			if(lineArr[0].contains("Water Temperature")){
-				waterTemperature = lineArr[1];
-			}
-			
+				waterTemperature = lineArr[1].trim();
+			}	
 		}
-		
 	}
 	
 	@Override
@@ -134,8 +140,7 @@ public class Buoy4jStation {
 	}
 	
 	/**
-	 * Print out the text in a node,
-	 * xml blows
+	 * Get the text inside a Node
 	 * @param node
 	 * @return
 	 */
@@ -153,5 +158,56 @@ public class Buoy4jStation {
 	    return buf.toString();
 	}
 
+	public String getLink() {
+		return link;
+	}
+
+	public String getPubDate() {
+		return pubDate;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public Location getBuoyLatLng() {
+		return buoyLatLng;
+	}
+
+	public boolean isShip() {
+		return isShip;
+	}
+
+	public String getDistance() {
+		return distance;
+	}
+
+	public String getWindDirection() {
+		return windDirection;
+	}
+
+	public String getWindSpeed() {
+		return windSpeed;
+	}
+
+	public String getWaveHeight() {
+		return waveHeight;
+	}
+
+	public String getWavePeriodDominant() {
+		return wavePeriodDominant;
+	}
+
+	public String getWavePeriodMean() {
+		return wavePeriodMean;
+	}
+
+	public String getWaveDirection() {
+		return waveDirection;
+	}
+
+	public String getWaterTemperature() {
+		return waterTemperature;
+	}
 
 }
