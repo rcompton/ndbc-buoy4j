@@ -34,7 +34,7 @@ public class Buoy4j {
 	 * @return
 	 * @throws IOException 
 	 */
-	public String getResponseString() throws IOException{
+	public String downloadResponseString() throws IOException{
 		
 		URL ndbcURL = new URL("http://www.ndbc.noaa.gov/rss/ndbc_obs_search.php?" +
 				"lat="+requestLocation.getLatitude()+

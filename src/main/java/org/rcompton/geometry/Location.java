@@ -1,5 +1,7 @@
 package org.rcompton.geometry;
 
+import com.google.gson.Gson;
+
 
 /**
  * Simple container for lat/lng
@@ -15,6 +17,13 @@ public class Location {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+	
+	public Location(String[] locStrArr) {
+		super();
+		this.latitude = Double.parseDouble(locStrArr[0]);
+		this.longitude = Double.parseDouble(locStrArr[1]);
+	}
+	
 	
 	public Location() {
 		super();
@@ -37,8 +46,8 @@ public class Location {
 	
 	@Override
 	public String toString() {
-		return "Location [latitude=" + latitude + ", longitude=" + longitude
-				+ "]";
+		Gson gson = new Gson();
+		return gson.toJson(this);
 	}
 	@Override
 	public int hashCode() {
