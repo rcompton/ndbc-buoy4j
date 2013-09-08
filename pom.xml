@@ -34,7 +34,6 @@
 		</developer>
 	</developers>
 
-
 	<scm>
 		<connection>scm:hg:http://code.google.com/p/ndbc-buoy4j/</connection>
 		<developerConnection>scm:hg:https://code.google.com/p/ndbc-buoy4j</developerConnection>
