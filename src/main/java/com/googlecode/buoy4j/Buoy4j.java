@@ -1,11 +1,12 @@
-package org.rcompton.buoy4j;
+package com.googlecode.buoy4j;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
-import org.rcompton.geometry.Location;
+
+import com.googlecode.buoy4j.geometry.Location;
 
 /**
  * 

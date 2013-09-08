@@ -1,14 +1,14 @@
-package org.rcompton.buoy4j;
+package com.googlecode.buoy4j;
 
 import java.util.Map;
 
 import org.jsoup.Jsoup;
-import org.rcompton.geometry.Location;
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.google.gson.Gson;
+import com.googlecode.buoy4j.geometry.Location;
 
 /**
  * 

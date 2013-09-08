@@ -1,4 +1,4 @@
-package org.rcompton.geometry;
+package com.googlecode.buoy4j.geometry;
 
 import com.google.gson.Gson;
 

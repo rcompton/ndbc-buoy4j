@@ -1,4 +1,4 @@
-package org.rcompton.buoy4j;
+package com.googlecode.buoy4j;
 
 import java.io.IOException;
 import java.io.StringReader;

@@ -1,8 +1,11 @@
-package org.rcompton.buoy4j;
+package com.googlecode.buoy4jtests;
 
 import java.io.IOException;
 
 import org.junit.Test;
+
+import com.googlecode.buoy4j.Buoy4j;
+import com.googlecode.buoy4j.Buoy4jResponse;
 
 public class Buoy4jTest {
 
