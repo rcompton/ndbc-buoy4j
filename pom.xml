@@ -9,10 +9,64 @@
 
 	<name>ndbc-buoy4j</name>
 	<url>http://code.google.com/p/ndbc-buoy4j/</url>
+	<description>
+	    Java wrapper for the API at http://www.ndbc.noaa.gov/
+	</description>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>rcompton</id>
+			<name>Ryan Compton</name>
+			<email>compton.ryan@gmail.com</email>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+
+	<scm>
+		<connection>scm:hg:http://code.google.com/p/ndbc-buoy4j/</connection>
+		<developerConnection>scm:hg:https://code.google.com/p/ndbc-buoy4j</developerConnection>
+		<url>http://code.google.com/p/ndbc-buoy4j/</url>
+	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 
 	<dependencies>
 
@@ -45,8 +99,6 @@
 			<artifactId>gson</artifactId>
 			<version>2.2.4</version>
 		</dependency>
-
-
 
 	</dependencies>
 </project>
