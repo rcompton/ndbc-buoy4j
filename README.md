@@ -58,6 +58,7 @@ Should yield the below json. Alternately, you can get the data from a `List<Buoy
 Installation:
 
 1.) Add the sonatype repository to your `pom.xml`:
+
 	<repositories>
 		<repository>
 			<id>sonatype-oss-public</id>
